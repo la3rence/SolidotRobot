@@ -2,6 +2,7 @@ var db = require('./utils/db');
 const parser = require('./utils/rss-parser');
 const fanfou = require('./utils/fanfou');
 const schedule = require('node-schedule');
+const Koa = require('koa');
 const tableName = 'solidot';
 
 async function doRss() {
@@ -27,3 +28,6 @@ function main() {
 }
 
 main();
+
+const app = new Koa();
+module.exports = app;

@@ -7,5 +7,9 @@
       "consumerSecret": "@consumersecret",
       "username": "@username",
       "password": "@password"
-    }
+    },
+    "routes": [
+      { "src": "/api/.*", "dest": "/api/now.js" },
+      { "src": "/.*", "dest": "/api/now.js" }
+  ]
 }
