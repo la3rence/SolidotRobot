@@ -1,0 +1,11 @@
+{
+    "name": "solidot-robot",
+    "version": 2,
+    "env": {
+      "MONGODB_URI": "@MONGODB_URI",
+      "consumerKey": "@consumerKey",
+      "consumerSecret": "@consumerSecret",
+      "username": "@username",
+      "password": "@password"
+    }
+}
