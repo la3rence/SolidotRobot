@@ -1,0 +1,9 @@
+node_modules
+.vscode
+yarn.lock
+yarn-error.log*
+package-lock.json
+.env
+.env*
+.vercel
+.DS_Store
