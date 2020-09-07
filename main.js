@@ -20,7 +20,7 @@ async function doRss() {
 }
 
 function main() {
-    schedule.scheduleJob('0 */5 * * * *', async () => {
+    schedule.scheduleJob('0 * * * * *', async () => {
         console.log('scheduleCronstyle:' + new Date());
         await doRss();
     });
