@@ -7,7 +7,7 @@ on:
 jobs:
   triggers:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
     - run: date && curl -XGET https://solibot.vercel.app/api/start
