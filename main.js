@@ -13,7 +13,7 @@ async function doRss() {
             } else {
                 console.log(`未发布: ${article.title}`);
                 await db.insertOne(tableName, { link: article.link });
-                await fanfou.postStatus(`${article.title} ( ${article.link} )`);
+                await fanfou.postStatus(`${article.title} ${article.link}`);
             }
         }));
 }
