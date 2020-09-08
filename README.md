@@ -6,4 +6,4 @@
 
 ## Serverless Fuction
 
-使用 Vercel 提供的 Node.js Runtime 暴露一个 HTTP API，同时使用第三方定时任务（Easy Cron）去触发。
+使用 Vercel 提供的 Node.js Runtime 暴露一个 HTTP API，使用 GitHub Actions 提供的 schedule 来定时触发。也可以使用第三方定时任务（如 Easy Cron）去触发。
