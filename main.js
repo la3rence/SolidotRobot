@@ -14,8 +14,8 @@ async function doRss() {
                 console.log(`已发布: ${article.title}`)
             } else {
                 console.log(`未发布: ${article.title}`);
-                // await fanfou.postStatus(`${article.link} :${article.contentSnippet}`);
                 await db.insertOne(tableName, { link: article.link });
+                await fanfou.postStatus(`${article.link} :${article.contentSnippet}`);
             }
         }));
 }
