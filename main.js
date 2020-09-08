@@ -5,7 +5,8 @@ const schedule = require('node-schedule');
 const tableName = 'solidot';
 
 async function doRss() {
-    const feed = await parser.parseURL('https://www.solidot.org/index.rss');
+    console.log("开始解析 RSS")
+    const feed = await parser.parseURL('http://www.solidot.org/index.rss');
     await Promise.all(
         feed.items.map(async article => {
             var linkCount = await db.count(tableName, { link: article.link });
@@ -20,8 +21,9 @@ async function doRss() {
 }
 
 function main() {
+    console.log("进入 main()")
     schedule.scheduleJob('0 * * * * *', async () => {
-        console.log('scheduleCronstyle:' + new Date());
+        console.log('时间: ' + new Date());
         await doRss();
     });
 }
