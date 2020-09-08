@@ -1,7 +1,7 @@
 var db = require('./utils/db');
 const parser = require('./utils/rss-parser');
 const fanfou = require('./utils/fanfou');
-const schedule = require('node-schedule');
+// const schedule = require('node-schedule');
 const tableName = 'solidot';
 
 async function doRss() {
@@ -20,11 +20,11 @@ async function doRss() {
         }));
 }
 
-function main() {
-    console.log("进入 main()")
-    schedule.scheduleJob('0 * * * * *', async () => {
-        console.log('时间: ' + new Date());
-        await doRss();
-    });
-}
-module.exports = main;
+// function main() {
+//     console.log("进入 main()")
+//     schedule.scheduleJob('0 * * * * *', async () => {
+//         console.log('时间: ' + new Date());
+//         await doRss();
+//     });
+// }
+module.exports = doRss;
