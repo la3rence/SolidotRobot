@@ -1,5 +1,7 @@
 # Solidot Fanfou Robot
 
+![cron](https://github.com/Lonor/SolidotRobot/workflows/cron/badge.svg?event=schedule)
+
 【非官方机器人】每 10 分钟我就去 solidot 看看有没有新闻，然后将新的消息发到 [饭否](https://fanfou.com/jayonit)。
 
 ## Serverless Fuction
