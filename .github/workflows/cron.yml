@@ -1,0 +1,13 @@
+name: cron
+
+on:
+  schedule:
+  - cron: '*/5 * * * *'
+
+jobs:
+  triggers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - run: date && curl -XGET https://solibot.vercel.app/api/start
