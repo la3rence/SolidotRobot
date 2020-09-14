@@ -1,7 +1,13 @@
 const db = require('./utils/db');
 const parser = require('./utils/rss-parser');
 const fanfou = require('./utils/fanfou');
+const URL = require('url');
 const tableName = 'solidot';
+
+function getSidFromLink(link) {
+    var arg = URL.parse(link, true);
+    return parseInt(arg.sid);
+}
 
 async function doRss() {
     var list = [];
@@ -12,6 +18,17 @@ async function doRss() {
             var resFromFanfou = {};
             if (linkCount > 0) {
                 console.log(`已发布: ${article.title}`)
+                console.log(`执行删除此前 20 对应记录以减少数据库留存`)
+                //删除前依旧查询是否存在
+                var beforeSid = getSidFromLink(article.link) - 20;
+                var beforeLink = "https://www.solidot.org/story?sid=" + beforeSid;
+                var beforeLinkCount = await db.count(tableName, { link: beforeLink });
+                if (beforeLinkCount > 0) {
+                    console.log(`删除旧链接 ${beforeLink}`);
+                    await db.deleteOne({ link: beforeLink });
+                } else {
+                    console.log(`旧链接 ${beforeLink} 已被删除`);
+                }
             } else {
                 console.log(`未发布: ${article.title}`);
                 await db.insertOne(tableName, { link: article.link });
