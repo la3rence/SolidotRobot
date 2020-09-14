@@ -1,7 +1,6 @@
 var doRss = require('../main');
 
 module.exports = async (req, res) => {
-  await doRss();
-  // Respond with a JSON string of all users in the collection
-  res.status(200).json({ "hello": "world" })
+  var res = await doRss();
+  res.status(200).json(res);
 }
