@@ -8,7 +8,7 @@ let authed = false;
 async function authFan() {
     if (authed === true) {
         console.log("已登录过饭否，检查 Token 是否有效...");
-        const user;
+        let user;
         try {
             user = await fanfou_client.get("/account/verify_credentials");
             if (user) {
