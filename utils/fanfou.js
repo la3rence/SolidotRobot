@@ -2,23 +2,25 @@
 const Fanfou = require('fanfou-sdk');
 require('dotenv').config();
 
-let currentFF = null;
+let fanfou_client;
+let authed = false;
 
 async function authFan() {
-    if (currentFF) {
-        console("已登录饭否")
-        return currentFF;
+    if(authed === true) {
+        console.log("已登录过饭否");
+        return fanfou_client;
+    } else {
+        console.log("登录饭否");
+        fanfou_client = new Fanfou({
+            consumerKey: process.env.consumerKey,
+            consumerSecret: process.env.consumerSecret,
+            username: process.env.username,
+            password: process.env.password
+        });
+        await fanfou_client.xauth();
+        authed = true;
+        return fanfou_client;
     }
-    console.log("登录饭否");
-    const ff = new Fanfou({
-        consumerKey: process.env.consumerKey,
-        consumerSecret: process.env.consumerSecret,
-        username: process.env.username,
-        password: process.env.password
-    });
-    await ff.xauth();
-    currentFF = ff;
-    return ff;
 }
 
 module.exports.getTimeline = async () => {
