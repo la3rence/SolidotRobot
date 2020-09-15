@@ -23,7 +23,7 @@ async function doRss() {
                 var beforeLinkCount = await db.count(tableName, { link: beforeLink });
                 if (beforeLinkCount > 0) {
                     console.log(`删除旧链接 ${beforeLink}`);
-                    await db.deleteOne({ link: beforeLink });
+                    await db.deleteOne(tableName, { link: beforeLink });
                 } else {
                     console.log(`旧链接 ${beforeLink} 已被删除`);
                 }
