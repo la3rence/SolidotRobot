@@ -31,6 +31,11 @@ module.exports.insertOne = async (collectionName, oneRecord) => {
     return table.insertOne(oneRecord);
 }
 
+module.exports.deleteOne = async (collectionName, whereObj) => {
+    var table = await getCollection(collectionName);
+    return table.deleteOne(whereObj);
+}
+
 module.exports.count = async (collectionName, whereObj) => {
     var table = await getCollection(collectionName);
     return table.countDocuments(whereObj);
