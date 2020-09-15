@@ -6,24 +6,28 @@ let fanfou_client;
 let authed = false;
 
 async function authFan() {
-    if(authed === true) {
-        console.log("已登录过饭否");
-        return fanfou_client;
-    } else {
-        console.log("登录饭否");
-        fanfou_client = new Fanfou({
-            consumerKey: process.env.consumerKey,
-            consumerSecret: process.env.consumerSecret,
-            username: process.env.username,
-            password: process.env.password
-        });
-        await fanfou_client.xauth();
-        authed = true;
-        return fanfou_client;
+    if (authed === true) {
+        console.log("已登录过饭否，检查 Token 是否有效...");
+        const user = await fanfou_client.get("/account/verify_credentials");
+        if (user) {
+            console.log("Token 有效!")
+            return fanfou_client;
+        }
     }
+    console.log("Token 失效，登录饭否");
+    fanfou_client = new Fanfou({
+        consumerKey: process.env.consumerKey,
+        consumerSecret: process.env.consumerSecret,
+        username: process.env.username,
+        password: process.env.password
+    });
+    await fanfou_client.xauth();
+    authed = true;
+    return fanfou_client;
+
 }
 
-function expireAuth(){
+function expireAuth() {
     authed = false;
 }
 // module.exports.getTimeline = async () => {
