@@ -31,7 +31,12 @@ async function doRss() {
             } else {
                 console.log(`执行发布: ${article.title}`);
                 await db.insertOne(tableName, { link: article.link });
-                resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${article.title} ${article.link}`});
+                try {
+                    resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${article.title} ${article.link}` });
+                } catch (err) {
+                    console.log(err);
+                    // fanfou.expireAuth();
+                }
             }
             list.push(resFromFanfou);
         }));
