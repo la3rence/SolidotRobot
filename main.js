@@ -5,23 +5,24 @@ const URL = require('url');
 const tableName = 'solidot';
 
 function getSidFromLink(link) {
-    var arg = URL.parse(link, true);
+    let arg = URL.parse(link, true);
     return parseInt(arg.query.sid);
 }
 
 async function doRss() {
-    var list = [];
+    let list = [];
+    console.log("开始获取 RSS 资源");
     const feed = await parser.parseURL('http://www.solidot.org/index.rss');
-    var fanfouClient = await fanfou.authFan();
+    let fanfouClient = await fanfou.authFan();
     await Promise.all(
         feed.items.map(async article => {
-            var linkCount = await db.count(tableName, { link: article.link });
-            var resFromFanfou = {};
+            let linkCount = await db.count(tableName, { link: article.link });
+            let resFromFanfou = {};
             if (linkCount > 0) {
                 console.log(`已发布: ${article.title}`)
-                var beforeSid = getSidFromLink(article.link) - 20;
-                var beforeLink = "https://www.solidot.org/story?sid=" + beforeSid;
-                var beforeLinkCount = await db.count(tableName, { link: beforeLink });
+                let beforeSid = getSidFromLink(article.link) - 20;
+                let beforeLink = "https://www.solidot.org/story?sid=" + beforeSid;
+                let beforeLinkCount = await db.count(tableName, { link: beforeLink });
                 if (beforeLinkCount > 0) {
                     // console.log(`删除旧链接 ${beforeLink}`);
                     await db.deleteOne(tableName, { link: beforeLink });
