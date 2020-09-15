@@ -6,6 +6,7 @@ const tableName = 'solidot';
 
 function getSidFromLink(link) {
     var arg = URL.parse(link, true);
+    console.log("arg = " + arg);
     return parseInt(arg.sid);
 }
 
@@ -18,7 +19,7 @@ async function doRss() {
             var resFromFanfou = {};
             if (linkCount > 0) {
                 console.log(`已发布: ${article.title}`)
-                console.log(`执行删除此前 20 对应记录以减少数据库留存`)
+                // console.log(`执行删除此前 20 对应记录以减少数据库留存`)
                 //删除前依旧查询是否存在
                 var beforeSid = getSidFromLink(article.link) - 20;
                 var beforeLink = "https://www.solidot.org/story?sid=" + beforeSid;
