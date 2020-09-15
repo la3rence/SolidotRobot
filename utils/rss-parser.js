@@ -7,7 +7,7 @@ const parser = new Parser({
     requestOptions: {
         rejectUnauthorized: false
     },
-    timeout: 10000,
+    timeout: 60000,
 });
 
 module.exports = parser;
