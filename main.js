@@ -12,6 +12,7 @@ function getSidFromLink(link) {
 async function doRss() {
     var list = [];
     const feed = await parser.parseURL('http://www.solidot.org/index.rss');
+    var fanfouClient = await fanfou.authFan();
     await Promise.all(
         feed.items.map(async article => {
             var linkCount = await db.count(tableName, { link: article.link });
@@ -28,9 +29,9 @@ async function doRss() {
                     // console.log(`旧链接 ${beforeLink} 已被删除`);
                 }
             } else {
-                console.log(`未发布: ${article.title}`);
+                console.log(`执行发布: ${article.title}`);
                 await db.insertOne(tableName, { link: article.link });
-                resFromFanfou = await fanfou.postStatus(`${article.title} ${article.link}`);
+                resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${article.title} ${article.link}`});
             }
             list.push(resFromFanfou);
         }));
