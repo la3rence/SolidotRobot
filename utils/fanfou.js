@@ -8,10 +8,16 @@ let authed = false;
 async function authFan() {
     if (authed === true) {
         console.log("已登录过饭否，检查 Token 是否有效...");
-        const user = await fanfou_client.get("/account/verify_credentials");
-        if (user) {
-            console.log("Token 有效!")
-            return fanfou_client;
+        const user;
+        try {
+            user = await fanfou_client.get("/account/verify_credentials");
+            if (user) {
+                console.log("Token 有效!")
+                return fanfou_client;
+            }
+        } catch (error) {
+            console.log("出现异常")
+            authed = false;
         }
     }
     console.log("Token 失效，登录饭否");
