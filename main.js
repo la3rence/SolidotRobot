@@ -6,7 +6,7 @@ const tableName = 'solidot';
 
 function getSidFromLink(link) {
     var arg = URL.parse(link, true);
-    console.log("arg = " + arg);
+    console.log("arg = " + arg.toString());
     return parseInt(arg.sid);
 }
 
