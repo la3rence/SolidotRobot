@@ -2,7 +2,13 @@
 const Fanfou = require('fanfou-sdk');
 require('dotenv').config();
 
+let currentFF = null;
+
 async function authFan() {
+    if (currentFF) {
+        console("已登录饭否")
+        return currentFF;
+    }
     console.log("登录饭否");
     const ff = new Fanfou({
         consumerKey: process.env.consumerKey,
@@ -11,6 +17,7 @@ async function authFan() {
         password: process.env.password
     });
     await ff.xauth();
+    currentFF = ff;
     return ff;
 }
 
