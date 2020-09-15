@@ -12,7 +12,7 @@ function getSidFromLink(link) {
 async function doRss() {
     let list = [];
     console.log("开始获取 RSS 资源");
-    const feed = await parser.parseURL('http://www.solidot.org/index.rss');
+    const feed = await parser.parseURL('https://www.solidot.org/index.rss');
     let fanfouClient = await fanfou.authFan();
     await Promise.all(
         feed.items.map(async article => {
