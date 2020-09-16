@@ -2,7 +2,7 @@ name: cron
 
 on:
   schedule:
-  - cron: '*/20 * * * *'
+  - cron: '*/30 * * * *'
 
 jobs:
   triggers:
@@ -10,4 +10,4 @@ jobs:
     timeout-minutes: 5
 
     steps:
-    - run: date && curl -XGET https://solibot.vercel.app/api/start
+    - run: curl -XGET https://solibot.vercel.app/api/start
