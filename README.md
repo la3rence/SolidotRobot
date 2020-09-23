@@ -7,3 +7,5 @@
 ## Serverless Function
 
 使用 [Vercel 提供的 Node.js Runtime 暴露一个 HTTP API](https://vercel.com/guides/deploying-a-mongodb-powered-api-with-node-and-vercel)，使用 [GitHub Actions 提供的 schedule](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onschedule) 来定时触发，也可以使用第三方定时任务（如 EasyCron）去触发。
+
+![Solidot Robot](solidot.png)
