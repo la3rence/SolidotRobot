@@ -30,13 +30,13 @@ async function doRss() {
                     // console.log(`旧链接 ${beforeLink} 已被删除`);
                 }
             } else {
-                console.log(`执行发布: ${article.title}`);
-                await db.insertOne(tableName, { link: article.link });
                 try {
+                    console.log(`执行发布: ${article.title}`);
                     resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${article.title} ${article.link}` });
+                    await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
                     console.log(err);
-                    // fanfou.expireAuth();
+                    fanfou.expireAuth();
                 }
             }
             list.push(resFromFanfou);
