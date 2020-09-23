@@ -20,7 +20,7 @@ async function doRss() {
             let resFromFanfou = {};
             if (linkCount > 0) {
                 console.log(`已发布: ${article.title}`)
-                let beforeSid = getSidFromLink(article.link) - 20;
+                let beforeSid = getSidFromLink(article.link) - 30;
                 let beforeLink = "https://www.solidot.org/story?sid=" + beforeSid;
                 let beforeLinkCount = await db.count(tableName, { link: beforeLink });
                 if (beforeLinkCount > 0) {
