@@ -34,7 +34,7 @@ async function doRss() {
                 try {
                     console.log(`执行发布: ${article.title}`);
                     // todo：敏感词
-                    let cleanTitle = article.title.replace(new RegExp("政府", "gm"), "ZF");
+                    let cleanTitle = article.title.replace(new RegExp("特朗普", "gm"), "Trump");
                     resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${cleanTitle} ${article.link}` });
                     await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
