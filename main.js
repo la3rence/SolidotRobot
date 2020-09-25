@@ -2,6 +2,7 @@ const db = require('./utils/db');
 const parser = require('./utils/rss-parser');
 const fanfou = require('./utils/fanfou');
 const URL = require('url');
+const { isRegExp } = require('util');
 const tableName = 'solidot';
 
 function getSidFromLink(link) {
@@ -32,7 +33,9 @@ async function doRss() {
             } else {
                 try {
                     console.log(`执行发布: ${article.title}`);
-                    resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${article.title} ${article.link}` });
+                    // todo：敏感词
+                    let cleanTitle = article.title.replaceAll("政府", "ZF");
+                    resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${cleanTitle} ${article.link}` });
                     await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
                     console.log(err);
