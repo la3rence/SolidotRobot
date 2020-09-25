@@ -10,4 +10,4 @@ jobs:
     timeout-minutes: 5
 
     steps:
-    - run: curl -XGET https://solibot.vercel.app/api/start
+    - run: date -u -d "+8 hour" && curl -XGET https://solibot.vercel.app/api/start
