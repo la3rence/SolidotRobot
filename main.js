@@ -27,12 +27,13 @@ async function doRss() {
                 if (beforeLinkCount > 0) {
                     // console.log(`删除旧链接 ${beforeLink}`);
                     await db.deleteOne(tableName, { link: beforeLink });
-                } 
+                }
             } else {
                 try {
                     console.log(`执行发布: ${article.title}`);
                     // todo：敏感词收集
-                    let cleanTitle = article.title.replace(new RegExp("特朗普", "gm"), " Trump ");
+                    let cleanTitle = article.title.replace(new RegExp("特朗普", "gm"), " Trump ")
+                        .replace(new RegExp("监管", "gm"), " supervise ");
                     resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${cleanTitle} ${article.link}` });
                     await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
