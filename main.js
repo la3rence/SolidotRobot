@@ -33,8 +33,9 @@ async function doRss() {
                     console.log(`执行发布: ${article.title}`);
                     // todo：敏感词收集
                     let cleanTitle = article.title.replace(new RegExp("特朗普", "gm"), " Trump ")
-                        .replace(new RegExp("监管", "gm"), " supervise ")
-                        .replace(new RegExp("网信办", "gm"), " CAC ");
+                        .replace(new RegExp("监管", "gm"), " Jiān Guǎn ")
+                        .replace(new RegExp("网信办", "gm"), " CAC ")
+                        .replace(new RegExp("民众抗议", "gm"), " 民众 KàngYì");
                     resFromFanfou = await fanfouClient.post('/statuses/update', { status: `${cleanTitle} ${article.link}` });
                     await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
