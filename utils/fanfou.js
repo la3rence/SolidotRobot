@@ -30,12 +30,12 @@ async function authFan() {
     await fanfou_client.xauth();
     authed = true;
     return fanfou_client;
-
 }
 
 function expireAuth() {
     authed = false;
 }
+
 // module.exports.getTimeline = async () => {
 //     var ff = await authFan();
 //     const timeline = await ff.get('/statuses/home_timeline', { count: 5 });

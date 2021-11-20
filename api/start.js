@@ -1,6 +1,7 @@
-var doRss = require('../main');
+const handleRSS = require('../main');
+const handleRSS = require('../main');
 
 module.exports = async (req, res) => {
-  var json =  await doRss();
-  res.status(200).json(json)
+  const list =  await handleRSS();
+  res.status(200).json(list)
 }

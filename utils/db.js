@@ -22,22 +22,22 @@ async function getCollection(collectionName) {
 }
 
 module.exports.findAllByCollection = async (collectionName) => {
-    var table = await getCollection(collectionName);
+    const table = await getCollection(collectionName);
     return table.find({}).toArray();
 }
 
 module.exports.insertOne = async (collectionName, oneRecord) => {
-    var table = await getCollection(collectionName);
+    const table = await getCollection(collectionName);
     return table.insertOne(oneRecord);
 }
 
 module.exports.deleteOne = async (collectionName, whereObj) => {
-    var table = await getCollection(collectionName);
+    const table = await getCollection(collectionName);
     return table.deleteOne(whereObj);
 }
 
 module.exports.count = async (collectionName, whereObj) => {
-    var table = await getCollection(collectionName);
+    const table = await getCollection(collectionName);
     return table.countDocuments(whereObj);
 }
 
