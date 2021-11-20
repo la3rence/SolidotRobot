@@ -4,7 +4,7 @@
   "description": "Robot for posting status to fanfou.com from solidot.org",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
   "keywords": ["serverless"],
   "author": "Lonor",

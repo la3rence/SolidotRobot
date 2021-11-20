@@ -45,24 +45,14 @@ async function handleRSS() {
                     );
                     await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
-                    console.log(err);
+                    console.warn(err);
                     fanfou.expireAuth();
                 }
             }
             list.push(resFromFanfou);
         }));
+    db.close();
     return list;
 }
 
 module.exports = handleRSS;
-
-// for local e2e testing:
-//
-// npm i node-schedule
-//
-// const schedule = require('node-schedule');
-// function main() {
-//     schedule.scheduleJob('*/1 * * * * *', async () => {
-//         await handleRSS();
-//     });
-// }
