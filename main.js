@@ -2,6 +2,7 @@ const db = require('./utils/db');
 const parser = require('./utils/rss-parser');
 const fanfou = require('./utils/fanfou');
 const URL = require('url');
+const touchiness = require('./utils/touchiness')
 
 const tableName = 'solidot';
 const feedURL = 'https://www.solidot.org/index.rss';
@@ -27,21 +28,19 @@ async function handleRSS() {
                 const beforeLink = `https://www.solidot.org/story?sid=${beforeSid}`;
                 const beforeLinkCount = await db.count(tableName, { link: beforeLink });
                 if (beforeLinkCount > 0) {
-                    // console.log(`删除旧链接 ${beforeLink}`);
+                    console.log(`删除旧链接 ${beforeLink}`);
                     await db.deleteOne(tableName, { link: beforeLink });
                 }
             } else {
                 try {
+                    let title = article.title;
+                    for (const originalKey in touchiness) {
+                        title.replace(new RegExp(originalKey, "gm"), touchiness[originalKey]);
+                    }
                     console.log(`执行发布: ${article.title}`);
-                    // todo：敏感词收集
-                    let cleanTitle = article.title
-                        .replace(new RegExp("特朗普", "gm"), " Trump ")
-                        .replace(new RegExp("监管", "gm"), " Jiān Guǎn ")
-                        .replace(new RegExp("网信办", "gm"), " CAC ")
-                        .replace(new RegExp("民众抗议", "gm"), " 民众 KàngYì");
                     resFromFanfou = await fanfouClient.post(
                         '/statuses/update',
-                        { status: `${cleanTitle} ${article.link}` }
+                        { status: `${title} ${article.link}` }
                     );
                     await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
@@ -51,7 +50,6 @@ async function handleRSS() {
             }
             list.push(resFromFanfou);
         }));
-    db.close();
     return list;
 }
 
