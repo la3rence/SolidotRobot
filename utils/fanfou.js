@@ -22,10 +22,10 @@ async function authFan() {
     }
     console.log("Token 失效，登录饭否");
     fanfou_client = new Fanfou({
-        consumerKey: process.env.consumerKey,
-        consumerSecret: process.env.consumerSecret,
-        username: process.env.username,
-        password: process.env.password
+        consumerKey: process.env.CONSUMERKEY,
+        consumerSecret: process.env.CONSUMERSECRET,
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD
     });
     await fanfou_client.xauth();
     authed = true;
