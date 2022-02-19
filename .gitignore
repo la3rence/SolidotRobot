@@ -7,3 +7,4 @@ package-lock.json
 .env*
 .vercel
 .DS_Store
+.idea/
