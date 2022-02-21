@@ -1,8 +1,10 @@
+'use strict';
+
 const db = require('./utils/db');
 const parser = require('./utils/rss-parser');
 const fanfou = require('./utils/fanfou');
 const URL = require('url');
-const touchiness = require('./utils/touchiness')
+const touchiness = require('./utils/touchiness');
 
 const tableName = 'solidot';
 const feedURL = 'https://www.solidot.org/index.rss';
@@ -23,7 +25,7 @@ async function handleRSS() {
             const linkCount = await db.count(tableName, { link: article.link });
             let resFromFanfou = {};
             if (linkCount > 0) {
-                console.log(`已发布: ${article.title}`)
+                console.log(`已发布: ${article.title}`);
                 const beforeSid = getSidFromLink(article.link) - 30;
                 const beforeLink = `https://www.solidot.org/story?sid=${beforeSid}`;
                 const beforeLinkCount = await db.count(tableName, { link: beforeLink });

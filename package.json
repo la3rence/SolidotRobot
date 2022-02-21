@@ -4,9 +4,15 @@
   "description": "Robot for posting status to fanfou.com from solidot.org",
   "main": "main.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "jshint": "jshint api test utils main.js"
   },
-  "keywords": ["serverless"],
+  "gitHooks": {
+    "pre-commit": "npm run jshint"
+  },
+  "keywords": [
+    "serverless"
+  ],
   "author": "Lonor",
   "license": "MIT",
   "dependencies": {
@@ -14,5 +20,8 @@
     "fanfou-sdk": "4.2.0",
     "mongodb": "4.4.0",
     "rss-parser": "3.12.0"
+  },
+  "devDependencies": {
+    "jshint": "2.13.4"
   }
 }

@@ -1,5 +1,5 @@
 const url = require('url');
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
 const mongodbAddress = process.env.MONGODB_URI;
@@ -7,7 +7,7 @@ let cachedDb = null;
 let currentClient = null;
 async function connectToDatabase(uri) {
     if (cachedDb) {
-        return cachedDb
+        return cachedDb;
     }
     const client = await MongoClient.connect(uri,
             { useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 20000 }
