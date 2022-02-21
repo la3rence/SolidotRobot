@@ -1,0 +1,19 @@
+{
+    "node": true,
+    "asi": true,
+    "esversion": 10,
+    "strict": true,
+    "module": true,
+    "curly": true,
+    "eqeqeq": true,
+    "latedef": true,
+    "noarg": true,
+    "nocomma": true,
+    "nonbsp": true,
+    "noreturnawait": true,
+    "undef": true,
+    "unused": true,
+    "varstmt": true,
+    "validthis": true
+
+}

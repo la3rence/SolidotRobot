@@ -3,4 +3,4 @@ module.exports = {
     "监管": " Jiān Guǎn ",
     "网信办": " CAC ",
     "民众抗议": " 民众 KàngYì "
-}
+};

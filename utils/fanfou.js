@@ -1,3 +1,4 @@
+'use strict';
 // 饭否 SDK
 const Fanfou = require('fanfou-sdk');
 // for local dev using .env to expose env values
@@ -13,11 +14,11 @@ async function authFan() {
         try {
             user = await fanfou_client.get("/account/verify_credentials");
             if (user) {
-                console.log("Token 有效!")
+                console.log("Token 有效!");
                 return fanfou_client;
             }
         } catch (error) {
-            console.log("出现异常")
+            console.log("出现异常");
             authed = false;
         }
     }
@@ -52,4 +53,4 @@ function expireAuth() {
 
 module.exports = {
     authFan, expireAuth,
-}
+};
