@@ -22,6 +22,7 @@
     "rss-parser": "3.12.0"
   },
   "devDependencies": {
+    "husky": "7.0.4",
     "jshint": "2.13.4"
   }
 }
