@@ -7,9 +7,6 @@
     "test": "node test",
     "jshint": "jshint api test utils main.js"
   },
-  "gitHooks": {
-    "pre-commit": "npm run jshint"
-  },
   "keywords": [
     "serverless"
   ],

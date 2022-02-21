@@ -1,7 +1,7 @@
 {
     "node": true,
     "asi": true,
-    "esversion": 10,
+    "esversion": 9,
     "strict": true,
     "module": true,
     "curly": true,
