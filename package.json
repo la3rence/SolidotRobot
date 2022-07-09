@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "husky": "8.0.1",
-    "jshint": "2.13.4"
+    "jshint": "2.13.5"
   }
 }
