@@ -13,7 +13,7 @@
   "author": "Lonor",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "16.0.2",
+    "dotenv": "16.0.3",
     "fanfou-sdk": "4.2.0",
     "mongodb": "4.9.1",
     "rss-parser": "3.12.0"
