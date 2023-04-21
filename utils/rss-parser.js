@@ -2,12 +2,12 @@ const Parser = require('rss-parser');
 
 const parser = new Parser({
     headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
     },
     requestOptions: {
         rejectUnauthorized: false
     },
-    timeout: 60000,
+    timeout: 50000,
 });
 
 module.exports = parser;

@@ -1,7 +1,5 @@
 'use strict';
-// 饭否 SDK
 const Fanfou = require('fanfou-sdk');
-// for local dev using .env to expose env values
 require('dotenv').config();
 
 let fanfou_client;
@@ -18,7 +16,7 @@ async function authFan() {
                 return fanfou_client;
             }
         } catch (error) {
-            console.log("出现异常");
+            console.error(error);
             authed = false;
         }
     }

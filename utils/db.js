@@ -10,7 +10,7 @@ async function connectToDatabase(uri) {
         return cachedDb;
     }
     const client = await MongoClient.connect(uri,
-            { useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 20000 }
+            { useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 10000, maxIdleTimeMS: 10000 }
          )
     currentClient = client;
     const db = await client.db(url.parse(uri).pathname.substr(1))

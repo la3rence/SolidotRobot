@@ -35,16 +35,16 @@ async function handleRSS() {
                 }
             } else {
                 try {
-                    let title = article.title;
+                    const title = article.title;
                     for (const originalKey in touchiness) {
                         title.replace(new RegExp(originalKey, "gm"), touchiness[originalKey]);
                     }
                     console.log(`执行发布: ${article.title}`);
+                    await db.insertOne(tableName, { link: article.link });
                     resFromFanfou = await fanfouClient.post(
                         '/statuses/update',
                         { status: `${title} ${article.link}` }
                     );
-                    await db.insertOne(tableName, { link: article.link });
                 } catch (err) {
                     console.warn(err);
                     fanfou.expireAuth();
