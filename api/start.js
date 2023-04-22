@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   const ip = req.headers["x-forwarded-for"];
   if (history[ip] > Date.now() - 1000 * 60 * 10){
     console.warn(`Rate limit exceeded - ${ip}: ${history[ip]}`);
-    res.status(200).list([]);
+    res.status(200).json([]);
     return;
   }
   history[ip] = Date.now();
