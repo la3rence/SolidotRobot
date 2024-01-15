@@ -2,7 +2,7 @@ const handleRSS = require('../main');
 
 // in-memory rate limit
 const history = {};
-const timeout = 1000 * 60 * 30;
+const timeout = 1000 * 60 * 15;
 
 module.exports = async (req, res) => {
   const ip = req.headers["x-forwarded-for"];

@@ -11,16 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+
+    - uses: pnpm/action-setup@v2.4.0
+      name: Install pnpm
+      id: pnpm-install
+      with:
+        version: 8
+        run_install: true
 
     - name: Test
       env:
@@ -31,5 +38,4 @@ jobs:
         CONSUMERSECRET: ${{ secrets.CONSUMERSECRET }}
       run: |
         env
-        npm i
-        npm test
+        pnpm test

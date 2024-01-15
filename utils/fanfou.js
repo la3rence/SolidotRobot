@@ -7,12 +7,12 @@ let authed = false;
 
 async function authFan() {
     if (authed === true) {
-        console.log("已登录过饭否，检查 Token 是否有效...");
+        console.log("Already authed... Checking token...");
         let user;
         try {
             user = await fanfou_client.get("/account/verify_credentials");
             if (user) {
-                console.log("Token 有效!");
+                console.log("Token is valid.");
                 return fanfou_client;
             }
         } catch (error) {
@@ -20,7 +20,7 @@ async function authFan() {
             authed = false;
         }
     }
-    console.log("Token 失效，登录饭否");
+    console.log("Token Expired. Login to Fanfou.");
     fanfou_client = new Fanfou({
         consumerKey: process.env.CONSUMERKEY,
         consumerSecret: process.env.CONSUMERSECRET,
@@ -44,7 +44,6 @@ function expireAuth() {
 
 // module.exports.postStatus = async (text) => {
 //     var ff = await authFan();
-//     console.log("发布消息");
 //     const status = await ff.post('/statuses/update', { status: text });
 //     return status;
 // }
