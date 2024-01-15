@@ -5,7 +5,6 @@ const parser = require("./utils/rss-parser");
 const fanfou = require("./utils/fanfou");
 const URL = require("url");
 const touchiness = require("./utils/touchiness");
-
 const feedURL = "https://www.solidot.org/index.rss";
 
 function getSidFromLink(link) {
@@ -13,14 +12,13 @@ function getSidFromLink(link) {
   return parseInt(arg.query.sid);
 }
 
-async function handleRSS() {
+async function handleRSS(dbCollection) {
   let list = [];
   const feed = await parser.parseURL(feedURL);
-  const solidotCollection = await db.getCollection("solidot");
   const fanfouClient = await fanfou.authFan();
   await Promise.all(
     feed.items.map(async (article) => {
-      const linkCount = await solidotCollection.countDocuments({
+      const linkCount = await dbCollection.countDocuments({
         link: article.link,
       });
       let resFromFanfou = {};
@@ -28,12 +26,12 @@ async function handleRSS() {
         console.log(`Published: ${article.title}`);
         const beforeSid = getSidFromLink(article.link) - 30;
         const beforeLink = `https://www.solidot.org/story?sid=${beforeSid}`;
-        const beforeLinkCount = await solidotCollection.countDocuments({
+        const beforeLinkCount = await dbCollection.countDocuments({
           link: beforeLink,
         });
         if (beforeLinkCount > 0) {
           console.log(`Deleting ${beforeLink}`);
-          await solidotCollection.deleteOne({ link: beforeLink });
+          await dbCollection.deleteOne({ link: beforeLink });
         }
       } else {
         try {
@@ -45,7 +43,7 @@ async function handleRSS() {
             );
           }
           console.log(`Executing post: ${article.title}`);
-          await solidotCollection.insertOne({ link: article.link });
+          await dbCollection.insertOne({ link: article.link });
           console.log(`Call Fanfou API: ${article.title}`);
             resFromFanfou = await fanfouClient.post("/statuses/update", {
               status: `${title} ${article.link}`,

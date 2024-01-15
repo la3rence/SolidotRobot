@@ -1,4 +1,7 @@
 const handleRSS = require('../main');
+const db = require('../utils/db');
+
+const dbCollection = await db.getCollection("solidot");
 
 // in-memory rate limit
 const history = {};
@@ -16,6 +19,6 @@ module.exports = async (req, res) => {
   const now = Date.now();
   history[ip] = now;
   history[ua] = now;
-  const list = await handleRSS();
+  const list = await handleRSS(dbCollection);
   res.status(200).json(list);
 }
