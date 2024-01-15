@@ -26,6 +26,6 @@ module.exports = async (req, res) => {
   const now = Date.now();
   history[ip] = now;
   history[ua] = now;
-  const list = await handleRSS(getDB());
+  const list = await handleRSS(await getDB());
   res.status(200).json(list);
 };

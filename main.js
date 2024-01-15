@@ -1,6 +1,5 @@
 "use strict";
 
-const db = require("./utils/db");
 const parser = require("./utils/rss-parser");
 const fanfou = require("./utils/fanfou");
 const URL = require("url");
