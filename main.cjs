@@ -1,9 +1,9 @@
 "use strict";
 
-const parser = require("./utils/rss-parser");
-const fanfou = require("./utils/fanfou");
+const parser = require("./utils/rss-parser.cjs");
+const fanfou = require("./utils/fanfou.cjs");
 const URL = require("url");
-const touchiness = require("./utils/touchiness");
+const touchiness = require("./utils/touchiness.cjs");
 const feedURL = "https://www.solidot.org/index.rss";
 
 function getSidFromLink(link) {
