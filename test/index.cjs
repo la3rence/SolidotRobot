@@ -1,5 +1,5 @@
-const handleRSS = require('../main');
-const db = require('../utils/db');
+const handleRSS = require('../main.cjs');
+const db = require('../utils/db.cjs');
 
 const test = async () => {
     try {
