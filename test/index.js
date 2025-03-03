@@ -1,5 +1,5 @@
-const handleRSS = require('../main.cjs');
-const db = require('../utils/db.cjs');
+import { default as handleRSS } from "../main.js";
+import db from "../utils/db.cjs";
 
 const test = async () => {
     try {
@@ -8,10 +8,10 @@ const test = async () => {
             console.log(list);
             process.exit(0);
         });
-    }catch (err){
+    } catch (err) {
         console.error(err);
     }
-   
+
 }
 test();
 

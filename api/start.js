@@ -1,4 +1,4 @@
-import { default as handleRSS } from "../main.cjs";
+import { default as handleRSS } from "../main.js";
 import * as db from "../utils/db.cjs";
 
 // cache this
