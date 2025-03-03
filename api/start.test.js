@@ -1,6 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
 import start from "./start.js";
-import { request } from "http";
 
 describe("start", () => {
 
@@ -10,7 +9,7 @@ describe("start", () => {
         }
     });
 
-    vi.mock(import('../main.cjs'), async (importOriginal) => {
+    vi.mock(import('../main.js'), async (importOriginal) => {
         return {
             default: async (dbCollection) => []
         }
@@ -23,10 +22,10 @@ describe("start", () => {
                 "user-agent": "agent" // ua
             }
         };
-        const response = {
-            status(httpStatus) {
+        const response =  {
+            status(_httpStatus) {
                 return {
-                    json(jsonObject) {
+                    json(_jsonObject) {
                         return new Object();
                     }
                 }
