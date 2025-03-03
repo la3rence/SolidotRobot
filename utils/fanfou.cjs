@@ -2,6 +2,9 @@
 const Fanfou = require('fanfou-sdk');
 require('dotenv').config();
 
+/**
+ * @type{Fanfou}
+ */
 let fanfou_client;
 let authed = false;
 
