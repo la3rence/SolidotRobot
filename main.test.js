@@ -18,7 +18,7 @@ describe('main.js', () => {
         };
     });
 
-    vi.mock(import('./utils/fanfou.cjs'), async (importOriginal) => {
+    vi.mock(import('./utils/fanfou.js'), async (importOriginal) => {
         const actual = await importOriginal();
         return {
             ...actual,

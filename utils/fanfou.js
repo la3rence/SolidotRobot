@@ -1,6 +1,5 @@
-'use strict';
-const Fanfou = require('fanfou-sdk');
-require('dotenv').config();
+import Fanfou from "fanfou-sdk";
+import "dotenv/config";
 
 /**
  * @type{Fanfou}
@@ -51,6 +50,6 @@ function expireAuth() {
 //     return status;
 // }
 
-module.exports = {
+export {
     authFan, expireAuth,
 };
