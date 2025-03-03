@@ -1,11 +1,21 @@
+const { Db } = require('mongodb');
 const url = require('url');
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
 const mongodbAddress = process.env.MONGODB_URI;
 let cachedDb = null;
+
+/**
+ * @type {MongoClient}
+ */
 let currentClient = null;
 
+/**
+ * 
+ * @param {string} uri 
+ * @returns {Db}
+ */
 async function connectToDatabase(uri) {
     if (cachedDb) {
         return cachedDb;
