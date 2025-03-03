@@ -1,6 +1,6 @@
 import Fanfou from "fanfou-sdk";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { authFan, expireAuth } from "./fanfou.cjs";
+import { authFan, expireAuth } from "./fanfou.js";
 
 describe("fanfou.js", () => {
 

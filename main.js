@@ -1,5 +1,5 @@
 import parser from "./utils/rss-parser.cjs";
-import * as fanfou from "./utils/fanfou.cjs";
+import * as fanfou from "./utils/fanfou.js";
 import URL from "url";
 import touchiness from "./utils/touchiness.cjs";
 import * as mongodb from "mongodb";
