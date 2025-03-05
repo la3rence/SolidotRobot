@@ -1,7 +1,7 @@
 import parser from "./utils/rss-parser.cjs";
 import * as fanfou from "./utils/fanfou.js";
 import URL from "url";
-import touchiness from "./utils/touchiness.cjs";
+import touchiness from "./utils/touchiness.js";
 import * as mongodb from "mongodb";
 const feedURL = "https://www.solidot.org/index.rss";
 
