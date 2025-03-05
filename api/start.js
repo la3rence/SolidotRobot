@@ -1,5 +1,5 @@
 import { default as handleRSS } from "../main.js";
-import * as db from "../utils/db.cjs";
+import * as db from "../utils/db.js";
 
 // cache this
 let dbCollection = null;
