@@ -1,4 +1,4 @@
-import parser from "./utils/rss-parser.cjs";
+import parser from "./utils/rss-parser.js";
 import * as fanfou from "./utils/fanfou.js";
 import URL from "url";
 import touchiness from "./utils/touchiness.js";

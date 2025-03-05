@@ -2,7 +2,7 @@ import Fanfou from "fanfou-sdk";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { default as handleRSS } from "./main.js";
 import { Collection } from "mongodb";
-import parser from "./utils/rss-parser.cjs";
+import parser from "./utils/rss-parser.js";
 
 describe('main.js', () => {
 
@@ -12,7 +12,7 @@ describe('main.js', () => {
         }
     })
 
-    vi.mock(import("./utils/rss-parser.cjs"), async (importOriginal) => {
+    vi.mock(import("./utils/rss-parser.js"), async (importOriginal) => {
         return {
             default: mockParser.default
         };

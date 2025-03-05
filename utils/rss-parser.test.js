@@ -1,6 +1,6 @@
 import Parser from "rss-parser";
 import { describe, expect, it } from "vitest";
-import parser from "./rss-parser.cjs";
+import parser from "./rss-parser.js";
 
 describe("rss-parser.js", () => {
 
