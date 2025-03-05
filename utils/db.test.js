@@ -1,6 +1,5 @@
 import { Collection, MongoClient } from "mongodb";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-// import { getCollection } from "./db.js";
 
 describe("db.js", () => {
     const MONGO_URI = "mongodb://localhost.com:27017/solidotrobot";
@@ -14,19 +13,6 @@ describe("db.js", () => {
     });
 
     vi.mock("dotenv/config");
-
-    // vi.mock(import("mongo"), (importOriginal) => {
-
-
-
-
-    //     const MongoClient = vi.fn();
-    //     MongoClient['connect'] = vi.fn(async (_uri, _options = {}) => mockClient);
-
-    //     return {
-    //         MongoClient
-    //     }
-    // });
 
     it("getCollection - should connect to database and return a reference to a MongoDB Collection", async () => {
 
@@ -44,10 +30,8 @@ describe("db.js", () => {
         const spyConnect = vi.spyOn(MongoClient, 'connect').mockImplementation(async (_uri, _options) => mockClient);
 
         const collectionName = "collection";
-        vi.stubEnv("MONGO_URI", "mongodb://localhost.com:27017/demo");
 
-
-        // use async import so that MONGO_URI env var is loaded after test.
+        // use async import so that MONGODB_URI env var is loaded after test.
         const { getCollection } = await import("./db.js");
 
         const result = await getCollection(collectionName);
