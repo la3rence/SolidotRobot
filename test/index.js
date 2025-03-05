@@ -1,5 +1,5 @@
 import { default as handleRSS } from "../main.js";
-import db from "../utils/db.cjs";
+import db from "../utils/db.js";
 
 const test = async () => {
     try {
