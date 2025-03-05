@@ -5,6 +5,7 @@ export default defineConfig({
         reporters: ["verbose", "html"],
         globals: true,
         mockReset: true,
+        environment: "node",
         coverage: {
             provider: "v8",
             reportsDirectory: "./coverage/",
