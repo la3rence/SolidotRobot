@@ -1,16 +1,23 @@
-"use strict";
-
-const parser = require("./utils/rss-parser");
-const fanfou = require("./utils/fanfou");
-const URL = require("url");
-const touchiness = require("./utils/touchiness");
+import parser from "./utils/rss-parser.js";
+import * as fanfou from "./utils/fanfou.js";
+import URL from "url";
+import touchiness from "./utils/touchiness.js";
+import * as mongodb from "mongodb";
 const feedURL = "https://www.solidot.org/index.rss";
+
+const { Collection } = mongodb;
 
 function getSidFromLink(link) {
   const arg = URL.parse(link, true);
   return parseInt(arg.query.sid);
 }
 
+/**
+ * Handles the rss elements fetched.
+ * 
+ * @param {Collection<Document>} dbCollection - a document collection
+ * @returns list of elements
+ */
 async function handleRSS(dbCollection) {
   let list = [];
   const feed = await parser.parseURL(feedURL);
@@ -44,9 +51,9 @@ async function handleRSS(dbCollection) {
           console.log(`Executing post: ${article.title}`);
           await dbCollection.insertOne({ link: article.link });
           console.log(`Call Fanfou API: ${article.title}`);
-            resFromFanfou = await fanfouClient.post("/statuses/update", {
-              status: `${title} ${article.link}`,
-            });
+          resFromFanfou = await fanfouClient.post("/statuses/update", {
+            status: `${title} ${article.link}`,
+          });
         } catch (err) {
           console.warn(err);
           fanfou.expireAuth();
@@ -58,4 +65,4 @@ async function handleRSS(dbCollection) {
   return list;
 }
 
-module.exports = handleRSS;
+export default handleRSS;

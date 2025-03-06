@@ -7,3 +7,6 @@ package-lock.json
 .env*
 .vercel
 .DS_Store
+.pnpm-store
+coverage
+html

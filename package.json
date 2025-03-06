@@ -1,11 +1,13 @@
 {
   "name": "solidot-robot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Robot for posting status to fanfou.com from solidot.org",
   "main": "main.js",
+  "type": "module",
   "private": true,
   "scripts": {
-    "test": "node test"
+    "start": "node test/index.js",
+    "test": "vitest run"
   },
   "keywords": [
     "serverless"
@@ -17,5 +19,10 @@
     "fanfou-sdk": "4.2.0",
     "mongodb": "5.7.0",
     "rss-parser": "3.13.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "3.0.7",
+    "@vitest/ui": "3.0.7",
+    "vitest": "^3.0.7"
   }
 }

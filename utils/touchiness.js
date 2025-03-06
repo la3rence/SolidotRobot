@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     "特朗普": " Trump ",
     "监管": " Jiān Guǎn ",
     "网信办": " CAC ",
