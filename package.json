@@ -10,9 +10,13 @@
     "test": "vitest run"
   },
   "keywords": [
-    "serverless"
+    "serverless",
+    "fanfou",
+    "rss",
+    "robot",
+    "solidot"
   ],
-  "author": "Lonor",
+  "author": "la3rence, hereje",
   "license": "MIT",
   "dependencies": {
     "dotenv": "17.2.1",

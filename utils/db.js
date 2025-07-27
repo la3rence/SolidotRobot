@@ -1,5 +1,4 @@
 import { Db, MongoClient } from "mongodb";
-import url from "url";
 import "dotenv/config";
 import process from "process";
 
@@ -21,12 +20,13 @@ async function connectToDatabase(uri) {
         return cachedDb;
     }
     const client = await MongoClient.connect(uri,
-        { useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 10000, maxIdleTimeMS: 10000 }
+        { connectTimeoutMS: 6000, maxIdleTimeMS: 6000 }
     )
     currentClient = client;
-    const db = await client.db(url.parse(uri).pathname.substr(1))
-    cachedDb = db
-    return db
+    const dbName = new URL(uri).pathname.replace(/^\//, "");
+    const db = await client.db(dbName);
+    cachedDb = db;
+    return db;
 }
 
 export const getCollection = async (collectionName) => {

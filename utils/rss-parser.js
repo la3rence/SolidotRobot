@@ -2,12 +2,12 @@ import Parser from "rss-parser";
 
 const parser = new Parser({
     headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
     },
     requestOptions: {
         rejectUnauthorized: false
     },
-    timeout: 10000,
+    timeout: 5000,
 });
 
 export default parser;
