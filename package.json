@@ -21,7 +21,7 @@
   "dependencies": {
     "dotenv": "17.4.2",
     "fanfou-sdk": "6.0.0",
-    "mongodb": "7.1.1",
+    "mongodb": "7.2.0",
     "rss-parser": "3.13.0"
   },
   "devDependencies": {
