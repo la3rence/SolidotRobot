@@ -19,7 +19,7 @@
   "author": "la3rence, hereje",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "17.4.2",
+    "dotenv": "18.0.0",
     "fanfou-sdk": "6.0.0",
     "mongodb": "7.6.0",
     "rss-parser": "3.13.0"
